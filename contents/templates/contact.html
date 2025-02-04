@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block contact %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact Us</title>
+  <!-- Bootstrap CSS (using CDN) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Optional: Your custom CSS can go here -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      margin-top: 50px;
+    }
+    .card-header {
+      background-color: #007bff;
+      color: #fff;
+    }
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #007bff;
+    }
+  </style>
+</head>
+<body>
+  <section class="mh-contact py-5" id="mh-contact">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <!-- Bootstrap Card for Contact Form -->
+          <div class="card shadow">
+            <div class="card-header text-center">
+              <h3 class="mb-0">Get In Touch</h3>
+            </div>
+            <div class="card-body">
+              <!-- Contact Form -->
+              <form method="post" action="{% url 'contact_form' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone:</label>
+                  <input type="tel" id="phone" name="phone" class="form-control" placeholder="Your Phone" required>
+                </div>
+                <div class="form-group">
+                  <label for="subject">Subject:</label>
+                  <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject" required>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message:</label>
+                  <textarea id="message" name="message" class="form-control" placeholder="Your Message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+              </form>
+            </div>
+          </div>
+          <!-- End Card -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bootstrap JS, Popper.js, and jQuery (using CDN) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+{% endblock %}
